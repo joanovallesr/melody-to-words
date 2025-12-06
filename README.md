@@ -1,1 +1,3 @@
 # melody-to-words
+
+This script loads a .wav audio file, converts the time-series waveform into frequency components using Fast Fourier Transform (FFT), and prints the highest amplitude frequency peaks. I learned how digital audio is represented using sample rates and arrays, how FFT transforms sound into measurable frequency data, and how to extract meaningful features for future machine learning steps.
