@@ -4,7 +4,7 @@ import scipy.io.wavfile as wavfile
 sample_rate, data = wavfile.read('piano.wav')
 
 if len(data.shape) == 2:
-    data = np.mean(axis=1) # Convert to mono by averaging channels
+    data = np.mean(data, axis=1) # Convert to mono by averaging channels
 
 fft_result = np.fft.fft(data)
 fft_frequencies = np.fft.fftfreq(len(fft_result), d=1/sample_rate)
