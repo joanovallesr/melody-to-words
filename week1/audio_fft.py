@@ -4,7 +4,7 @@ import scipy.io.wavfile as wavfile
 # Load the audio file
 sample_rate, data = wavfile.read('piano.wav')
 
-# If stereo, convert to mono by averaging channels
+# If audio has 2 channels (stereo), convert to mono by averaging channels
 if len(data.shape) == 2:
     data = np.mean(data, axis=1)
 
