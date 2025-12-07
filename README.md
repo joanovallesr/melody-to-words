@@ -8,31 +8,26 @@ This project is personal — I began developing it for my daughter, who is curre
 
 Many children with speech delays:
 
-    - Communicate more freely when melody removes pressure
-
-    - Respond strongly to repetition and rhythm
-
-    - Engage well with multisensory feedback (sound + visual + positive reinforcement)
+- Communicate more freely when melody removes pressure
+- Respond strongly to repetition and rhythm
+- Engage well with multisensory feedback (sound + visual + positive reinforcement)
 
 If a child can press keys and hear associated words or sentences, we may create:
 
-    - A playful environment with low verbal pressure
-
-    - Repetition without boredom
-
-    - A sense of control and achievement
+- A playful environment with low verbal pressure
+- Repetition without boredom
+- A sense of control and achievement
 
 This project explores that possibility through software and machine learning.
 
 ## How the System Works
 
 1. Child plays melody
-2. System captures audio (real-time or file)
+2. System captures audio (file-based or real-time)
 3. Note pattern is extracted using FFT + signal processing
 4. ML model maps melody → word
 5. The app speaks the word using text-to-speech
 6. Repetition reinforces association
-
 
 ## How FFT Helps Machine Learning Understand Sound
 
@@ -40,28 +35,41 @@ Raw audio is a continuous, unstructured waveform — machines cannot meaningfull
 
 Fast Fourier Transform (FFT) converts sound into frequency components, separating complex waves into individual sine waves with measurable:
 
-    - Frequency (pitch)
-
-    - Amplitude (volume)
-
-    - Phase (timing)
+- Frequency (pitch)
+- Amplitude (volume)
+- Phase (timing)
 
 This transforms sound into numerical features — a format suitable for machine learning models.
 
-## Curren Stage: Frequency Peak Extractio
+## Current Stage: Frequency Peak Extraction & Real-Time Capture
 
 This repository currently includes:
 
-    - A Python script (audio_fft.py) that:
+- **Week 1 — `audio_fft.py`**: Loads `.wav` files, applies FFT to convert waveform to frequency domain, extracts top 5 frequency peaks, prints results to console.
+- **Week 2 — `mic_stream_fft.py`**: In-progress real-time microphone streaming using `sounddevice`. Captures audio in small chunks, computes FFT, prints simplified amplitude bands in real time.
+- **Assets**: `piano.wav` as reference WAV file for testing FFT logic.
 
-        1. Loads a .wav file
+This forms the foundation for note detection, melody mapping, and real-time interaction.
 
-        2. Converts the waveform into frequency domain
+![Screenshot Week 1](assets/screenshots/week1_screenshot.png)
 
-        3. Extracts the highest amplitude frequency peaks
+## Developer / Copilot Instructions
 
-        4. Prints the results to the console
+See [.github/copilot-instructions.md](.github/copilot-instructions.md) for detailed guidance:
 
-This forms the foundation for note detection and melody mapping.
+- Architecture overview and data flow
+- Key FFT processing patterns
+- Dependencies (`numpy`, `scipy`, `sounddevice`)
+- Audio format constraints
+- Development priorities (mic streaming → note detection → melody → ML → TTS)
+- Naming conventions, feature extraction recommendations, and testing guidance
 
-![alt text](<Screenshot 2025-12-06 at 12.28.11 AM.png>)
+---
+
+## Next Steps
+
+- Map frequency peaks → musical notes
+- Extract melody sequences for ML input
+- Train simple model mapping melodies → words
+- Integrate TTS for feedback
+- Iterate and test with real-time inputs
