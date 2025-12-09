@@ -1,5 +1,18 @@
+import sys
+import os
+
+# Get the current script directory
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Construct the path to the week3 directory
+week3_path = os.path.join(current_dir, '../week3')
+
+# Add the week3 directory to the system path
+sys.path.append(week3_path)
+
 import numpy as np
 import scipy.io.wavfile as wavfile
+import melody_to_notes as mtn
 
 # Load the audio file
 sample_rate, data = wavfile.read('piano.wav')
@@ -23,7 +36,7 @@ positive_magnitude = magnitude[: len(magnitude) // 2]
 top_indices = positive_magnitude.argsort()[-5:][::-1]
 top_frequencies = positive_freqs[top_indices]
 
-# Print the top 5 frequencies
-print("Top 5 Frequencies (Hz):")
+# Convert top frequencies to note names and print them
+print("Detected Notes:")
 for freq in top_frequencies:
-    print(f"{freq:.2f} Hz")
+    print(mtn.frequency_to_note_name(freq))
