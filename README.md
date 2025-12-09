@@ -47,6 +47,7 @@ This repository currently includes:
 
 - **Week 1 — `audio_fft.py`**: Loads `.wav` files, applies FFT to convert waveform to frequency domain, extracts top 5 frequency peaks, prints results to console.
 - **Week 2 — `mic_stream_fft.py`**: In-progress real-time microphone streaming using `sounddevice`. Captures audio in small chunks, computes FFT, prints simplified amplitude bands in real time.
+- **Week 3 — `melody_to_notes.py`**: Converts top FFT frequencies from audio into musical note names, enabling symbolic note detection for downstream ML mapping.
 - **Assets**: `piano.wav` as reference WAV file for testing FFT logic.
 
 This forms the foundation for note detection, melody mapping, and real-time interaction.
@@ -68,7 +69,6 @@ See [.github/copilot-instructions.md](.github/copilot-instructions.md) for detai
 
 ## Next Steps
 
-- Map frequency peaks → musical notes
 - Extract melody sequences for ML input
 - Train simple model mapping melodies → words
 - Integrate TTS for feedback
